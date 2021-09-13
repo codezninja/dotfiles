@@ -7,6 +7,8 @@ if [[ "$1" == "-h" || "$1" == "--help" ]]; then cat <<HELP
 
 Usage: $(basename "$0")
 
+HELP
+exit; fi
 ###########################################
 # GENERAL PURPOSE EXPORTED VARS / FUNCTIONS
 ###########################################
@@ -318,3 +320,4 @@ fi
 
 # All done!
 e_header "All done!"
+

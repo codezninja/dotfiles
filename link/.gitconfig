@@ -1,0 +1,92 @@
+[user]
+	name = Ezbon Jacob
+	email = ezjacob@gmail.com
+[core]
+  autocrlf = input
+  whitespace = fix,space-before-tab,tab-in-indent,trailing-space
+	excludesfile = /Users/ezbon.jacob/.gitignore_global
+	ignorecase = false
+	pager = git-split-diffs --color | less -RFX
+[apply]
+  whitespace = fix
+[alias]
+  br = branch
+  ci = commit
+  co = checkout
+  df = diff
+  g = grep -I
+  lg = log -p
+  pp = !"echo 'Pull'; git pull; echo 'Push'; git push"
+  rb = rbranch
+  rv = review
+  st = status
+  ksdiff = difftool -y -t Kaleidoscope
+[branch "master"]
+  remote = origin
+  merge = refs/heads/master
+[color]
+  ui = auto
+[color "branch"]
+  current = yellow reverse
+  local = yellow
+  remote = green
+[color "diff"]
+  meta = yellow bold
+  frag = magenta bold
+  old = red bold
+  new = green bold
+[color "status"]
+  added = yellow
+  changed = green
+  untracked = cyan
+[merge]
+  log = true
+[difftool "Kaleidoscope"]
+  cmd = ksdiff-wrapper git \"$LOCAL\" \"$REMOTE\"
+[rerere]
+  enabled = 1
+[url "git@github.com:"]
+  insteadOf = "gh:"
+  pushInsteadOf = "github:"
+  pushInsteadOf = "git://github.com/"
+[url "git://github.com/"]
+  insteadOf = "github:"
+[url "git@gist.github.com:"]
+  insteadOf = "gst:"
+  pushInsteadOf = "gist:"
+  pushInsteadOf = "git://gist.github.com/"
+[url "git://gist.github.com/"]
+  insteadOf = "gist:"
+[url "git@heroku.com:"]
+  insteadOf = "heroku:"
+[difftool "sourcetree"]
+	cmd = /usr/local/bin/ksdiff -w \"$LOCAL\" \"$REMOTE\"
+	path = 
+[mergetool "sourcetree"]
+	cmd = /usr/local/bin/ksdiff --merge --output \"$MERGED\" --base \"$BASE\" -- \"$LOCAL\" --snapshot \"$REMOTE\" --snapshot
+	trustExitCode = true
+[commit]
+	template = /Users/ezbon.jacob/.stCommitMsg
+	gpgsign = true
+[remote "origin"]
+  push = HEAD
+[init]
+	templateDir = /Users/ezbon.jacob/.git-template
+[includeIf "gitdir:github.com/"]
+  path = /Users/ezbon.jacob/.gitconfig-github
+[includeIf "gitdir:ghe.coxautoinc.com/"]
+  path = /Users/ezbon.jacob/.gitconfig-work
+[includeIf "gitdir:bitbucket.com/"]
+  path = /Users/ezbon.jacob/.gitconfig-github
+[pull]
+	rebase = false
+[diff]
+  submodule = log
+[diff]
+      tool = vscode
+[difftool "vscode"]
+  cmd = code --wait --diff $LOCAL $REMOTE
+[merge]
+      tool = vscode
+[mergetool "vscode"]
+      cmd = code --wait $MERGED
