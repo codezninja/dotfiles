@@ -10,6 +10,10 @@
 # Don't commit Vim plugins, vim-plug will install them.
 /link/.vim/plugged
 
+# Don't commit tmux plugins
+/link/.tmux/plugins/
+/link/.tmux/resurrect/
+
 # Ignore any file with LOCAL in the name (good for per-machine vars/functions)
 *LOCAL*
 
