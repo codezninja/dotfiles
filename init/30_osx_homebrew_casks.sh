@@ -74,7 +74,9 @@ casks=(
   a-better-finder-rename
   alfred
   atom
+  aws-vpn-client
   bartender
+  datagrip
   docker
   divvy
   dropbox

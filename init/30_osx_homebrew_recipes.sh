@@ -59,6 +59,7 @@ recipes=(
   rbenv/tap/openssl@1.0
   readline
   reattach-to-user-namespace
+  session-manager-plugin
   subversion
   terminal-notifier
   terraform-docs

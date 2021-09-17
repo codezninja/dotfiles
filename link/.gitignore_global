@@ -92,3 +92,6 @@ venv
 rds.cert
 
 node_modules/
+
+
+cf_to_tf.sh
