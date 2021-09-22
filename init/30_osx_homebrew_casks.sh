@@ -128,11 +128,18 @@ casks=(
 )
 
 # Install Homebrew casks.
+installed_casks=$(brew list --cask)
+
 casks=($(setdiff "${casks[*]}" "$(brew cask list 2>/dev/null)"))
 if (( ${#casks[@]} > 0 )); then
   e_header "Installing Homebrew casks: ${casks[*]}"
   for cask in "${casks[@]}"; do
-    brew install --cask $cask
+    echo "$installed_casks" | grep -q ^$cask$
+    if [ ! $? ];  then
+      brew install --cask $cask
+    else
+      echo "$cask installed."
+    fi
   done
   brew cleanup
 fi
