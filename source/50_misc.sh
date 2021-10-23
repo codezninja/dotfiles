@@ -50,6 +50,7 @@ alias mvndev='BUILD_VERSION=dev mvn clean package'
 alias backup_consul='consul kv export vikings/ > ~/Backups/$(date +"%Y")/consul_backup_$(date +"%m%d%Y").json'
 alias be='bundle exec'
 alias tf='terraform'
+alias venv="python3 -m venv venv && source venv/bin/activate"
 
 
 urlencode() {
@@ -93,3 +94,4 @@ clear_aws() {
 clear_terraform() {
   find . -type d -name .terraform -exec rm -rf {} \;
 }
+

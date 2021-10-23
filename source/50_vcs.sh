@@ -184,3 +184,7 @@ if is_osx; then
 fi
 
 function gi() { curl -sL https://www.toptal.com/developers/gitignore/api/$@ ;}
+
+function gh_org_co() {
+  gh repo list --limit 1000 $1 --json sshUrl,nameWithOwner | jq -c -r '.[] | [.sshUrl, .nameWithOwner] | @tsv' | xargs -n 2 gh repo clone
+}

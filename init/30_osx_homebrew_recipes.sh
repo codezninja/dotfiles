@@ -32,6 +32,7 @@ recipes=(
   glib
   go
   gobject-introspection
+  gnu-sed
   gpg2
   gradle
   hashicorp/tap/waypoint

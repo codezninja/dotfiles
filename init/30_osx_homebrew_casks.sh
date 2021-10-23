@@ -73,7 +73,9 @@ casks=(
   1password-cli
   a-better-finder-rename
   alfred
+  amazon-chime
   atom
+  appcleaner
   aws-vpn-client
   bartender
   datagrip
@@ -128,14 +130,14 @@ casks=(
 )
 
 # Install Homebrew casks.
-installed_casks=$(brew list --cask)
+installed_casks=$(brew list --cask -1)
 
 casks=($(setdiff "${casks[*]}" "$(brew cask list 2>/dev/null)"))
 if (( ${#casks[@]} > 0 )); then
   e_header "Installing Homebrew casks: ${casks[*]}"
   for cask in "${casks[@]}"; do
     echo "$installed_casks" | grep -q ^$cask$
-    if [ ! $? ];  then
+    if [ $? -ne 0 ];  then
       brew install --cask $cask
     else
       echo "$cask installed."
