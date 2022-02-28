@@ -37,6 +37,8 @@ tmux_conf_new_pane_reconnect_ssh=false
 #   - false (default)
 tmux_conf_new_session_prompt=false
 
+#bind-key j command-prompt -p "join pane from: "  "join-pane -h -s '%%'"
+#bind-key h command-prompt -p "join pane from: "  "join-pane -v -s '%%'"
 
 # -- display -------------------------------------------------------------------
 

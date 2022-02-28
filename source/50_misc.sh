@@ -51,6 +51,7 @@ alias backup_consul='consul kv export vikings/ > ~/Backups/$(date +"%Y")/consul_
 alias be='bundle exec'
 alias tf='terraform'
 alias venv="python3 -m venv venv && source venv/bin/activate"
+alias lint="docker run --rm -e RUN_LOCAL=true -v $(pwd):/tmp/lint -e LOG_LEVEL=NOTICE -e JAVA_FILE_NAME=checkstyle.xml  github/super-linter"
 
 
 urlencode() {
@@ -95,3 +96,20 @@ clear_terraform() {
   find . -type d -name .terraform -exec rm -rf {} \;
 }
 
+op_find_item_uuid() {
+  op list items | jq -r ".[] | select(.overview.title == \"$1\") | .uuid"
+}
+
+op_get_item_field() {
+  search=$1
+  field=$2
+  # echo "Searching for item $search"
+  uuid=$(op_find_item_uuid "$search")
+  if [ -n $uuid ]; then
+    # echo "Found uuid $uuid"
+    op get item $uuid | jq -r ".details.sections[0].fields[] | select(.t == \"$field\") | .v"
+  else
+    # echo "no uuid found"
+    exit 1
+  fi
+}
