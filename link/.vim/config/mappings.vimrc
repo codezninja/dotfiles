@@ -75,25 +75,3 @@ map <leader>r :CtrlPMRUFiles<CR>
 
 " NERDTree
 map <leader>n :NERDTreeToggle<CR>
-
-" eclim
-augroup eclim
-  autocmd!
-
-  " Debug command for Spring Boot projects
-  autocmd FileType java command! Debug bd | ! mvn clean package -DskipTests && mvim --servername mvim && java -Xdebug -Xrunjdwp:server=y,transport=dt_socket,address=1044,suspend=n -jar ./target/*-null.war
-
-  " Shortcuts
-  autocmd FileType java nnoremap <leader>jo :JavaImportOrganize<CR>
-  autocmd FileType java nnoremap <leader>jdb :JavaDebugStart localhost 1044<CR>
-
-  autocmd FileType java nnoremap <leader>jb :JavaDebugBreakpointToggle<CR>
-  autocmd FileType java nnoremap <leader>jl :JavaDebugBreakpointsList<CR>
-
-  autocmd FileType java nnoremap <leader>o :call eclim#java#debug#Step("over") <bar> JavaDebugStatus<CR>
-  autocmd FileType java nnoremap <leader>i :call eclim#java#debug#Step("into") <bar> JavaDebugStatus<CR>
-  autocmd FileType java nnoremap <leader>c :call eclim#java#debug#Step("return") <bar> JavaDebugStatus<CR>
-
-augroup end
-
-
