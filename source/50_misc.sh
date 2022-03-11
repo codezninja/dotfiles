@@ -113,3 +113,11 @@ op_get_item_field() {
     exit 1
   fi
 }
+
+superlinter() {
+  docker run -it --rm -e RUN_LOCAL=true -v $(pwd):/tmp/lint -e SSH_KEY="$(cat ~/.ssh/superlinter)" -e LOG_LEVEL=NOTICE -e JAVA_FILE_NAME=checkstyle.xml  github/super-linter
+}
+
+fix_text() {
+  textlint -c .github/linters/.textlintrc  --fix "${1:-.}"
+}
